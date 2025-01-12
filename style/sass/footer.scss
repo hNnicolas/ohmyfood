@@ -1,0 +1,51 @@
+footer {
+    background-color: $footer-background--header-txt;
+    color: white;
+    padding: 22px 25px;
+
+    @media screen and (min-width:1024px) {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 30px 70px;
+    }
+    & .footer__title {
+        font-family: $secondary-font;
+        font-size: $subtitle-size;
+
+        @media screen and (min-width:1024px) {
+            margin-left: 80px;
+            @include margin-footer;
+        }
+    }
+    & .footer__content {
+        list-style: none;
+        padding: 0;
+
+        @media screen and (min-width:1024px) {
+            display: flex;
+            gap: 20px;
+            @include margin-footer;
+        }
+        &--text {
+            margin-top: 7px;
+            & .fa-solid {
+                margin-right: 10px;
+            }
+            & .fa-handshake-angle {
+                font-size: 12px;
+            }
+            & a {
+                color: white;
+            }
+        }
+        &--text:nth-child(3) {
+            @media screen and (min-width:1024px) {
+                margin-left: 30px;
+            }
+        }
+        
+        &--text-light {
+            font-weight: $regular;
+        }
+    }
+}

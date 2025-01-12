@@ -1,0 +1,365 @@
+.loader {
+    background-color: $main-background;
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9;
+    @include flex-center;
+    animation: loader-end-visibility 0s both 3.5s;
+    & .loader__content {
+        animation: loader-block 3.5s both 0s;
+        z-index: 99;
+        @include flex-center;
+        position: relative;
+        & .loader__container {
+            @include flex-center;
+            &--first {
+                @include loader;
+                width: 110px;
+                height: 110px;
+                border-top: 15px solid $primary;
+                animation: bordure-first 1s both 1.8s, border-rotation 1s both 1.8s;
+                .loader__container--second {
+                    @include loader;
+                    width: 80px;
+                    height: 80px;
+                    border-bottom: 15px solid $secondary;
+                    animation: bordure-second 1s both 1s, border-rotation 1s both 1s;
+                    .loader__container--third {
+                        @include loader;
+                        width: 50px;
+                        height: 50px;
+                        border-left: 15px solid $accent;
+                        animation: bordure-third 1s both 0.15s, border-rotation 1s both 0.15s;
+                        .loader__container--four {
+                            box-sizing: border-box;
+                            background-color: #F6F6F6;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+        & .loader__txt {
+            @include flex-center;
+            font-family: 'Shrikhand', cursive;
+            position: absolute;
+            bottom: -1.5rem;
+            &--first {
+                color: $accent;
+                animation: txt-apparition 1s both 0.4s, txt-after 0.5s both 2.8s;
+            }
+            &--second {
+                color: $secondary;
+                animation: txt-apparition 1s both 1.4s, txt-after 0.5s both 2.8s;
+            }
+            &--third {
+                color: $primary;
+                animation: txt-apparition 1s both 2.2s, txt-after 0.5s both 2.8s;
+            }
+        }
+    }
+}
+@keyframes bordure-first {
+    50% {
+        border-right-color: $primary;
+    }
+    75% {
+        border-bottom-color: $primary;
+    }
+    100% {
+        border-left-color: $primary;
+        border-color: $primary;
+    }
+}
+
+@keyframes bordure-second {
+    50% {
+        border-left-color: $secondary;
+    }
+    75% {
+        border-top-color: $secondary;
+    }
+    100% {
+        border-right-color: $secondary;
+        border-color: $secondary;
+    }
+}
+
+@keyframes bordure-third {
+    50% {
+        border-top-color: $accent;
+    }
+    75% {
+        border-right-color: $accent;
+    }
+    100% {
+        border-bottom-color: $accent;
+        border-color: $accent;
+    }
+}
+
+@keyframes border-rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes txt-apparition {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes txt-after {
+    to {
+        color: black;
+    }
+}
+
+@keyframes loader-block {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    90% {
+        transform: scale(1.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes loader-end-visibility {
+    to {
+        transform: scale(0);
+        opacity: 0;
+        display: none;
+    }
+}
+
+body {
+    font-family: $main-font;
+    @include text($main-txt-size, $medium);
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2 {
+    @include title-main;
+}
+
+h3 {
+    margin: 0;
+}
+
+i {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    .header-img {
+        width: 100%;
+        @include flex-center;
+        padding: 14px 0px 13px 0px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+        position: relative;
+        & img {
+            width: 197px;
+        }
+    }
+    & .location {
+        background-color: #EAEAEA;
+        text-align: center;
+        padding: 15px 0;
+        color: $footer-background--header-txt;
+        & i {
+            margin-right: 14px;
+        }
+    }
+}
+
+.reservation {
+    text-align: center;
+    background-color: $main-background;
+    padding: 15px 25px 40px 25px;
+    & p {
+        font-weight: $light;
+    }
+    & a {
+        @include text($main-txt-size, $medium);
+        padding: 13px 18.75px;
+        @include bouton-cta;
+    }
+    & a:hover {
+        @include bouton-cta-hover;
+    }
+}
+
+.fonctionnement {
+    padding: 48px 20px 68px 20px;
+
+    @media screen and (min-width:1024px) {
+        @include desktop-container;
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        @media screen and (min-width:1024px) {
+            flex-direction: row;
+        }
+        &--card {
+            background-color: $main-background;
+            box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+            height: 72px;
+            width: auto;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            margin-left: 12px;
+            
+            @media screen and (min-width:1024px) {
+                width: 33.33%;
+            }
+            &-number {
+                background: $primary;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                @include flex-center;
+                color: white;
+                margin-left: -12px;
+                align-self: center;
+            }
+            &-content {
+                margin-left: 20px;
+                display: flex;
+                align-items: baseline;
+                gap: 20px;
+                & .fa-solid {
+                    color: #7E7E7E;
+                    font-size: 20px;
+                }
+                & .fa-store {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+.restaurants {
+    background-color: $main-background;
+    padding: 30px 18px 50px 18px;
+    &__content {
+        @media screen and (min-width:1024px) {
+            @include desktop-container;
+        }
+    }
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        @media screen and (min-width:1024px) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        & a {
+            @media screen and (min-width:1024px) {
+                width: calc(50% - 25px);
+            }
+            & .restaurants__card {
+                background-color: white;
+                border-radius: 15px;
+                position: relative;
+                &--new {
+                    position: absolute;
+                    right: 15px;
+                    top: 15px;
+                    background-color: $accent;
+                    padding: 7px 11px;
+                    font-size: 14px;
+                    border-radius: 2px;
+                    color: #008766;
+                }
+                &--img {
+                    width: 100%;
+                    height: 231px;
+                    border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;
+                    object-position: center;
+                    object-fit: cover;
+                }
+                &--component {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 22px 13px 15px;
+                    &-text {
+                        & p {
+                            margin: 5px 0;
+                            @include text($card-description-size, $light);
+                        }
+                    }
+                    &-icons {
+                        font-size: $heart-size;
+                        & .fa-solid {
+                            font-weight: 900;
+                            background: linear-gradient($primary, $secondary);
+                            color: transparent;
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            position: absolute;
+                            opacity: 0;
+                            transition: opacity 0.5s;
+                        }
+                        & .fa-regular {
+                            opacity: 1;
+                            transition: opacity 1s;
+                        }
+                    }
+                    &-icons:hover .fa-solid {
+                        opacity: 1;
+                    }
+                    &-icons:hover .fa-regular {
+                        opacity: 0;
+                        transition: opacity 0.5s;
+                    }
+                }
+            }
+        }
+    }
+}
