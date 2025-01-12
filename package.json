@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/casumelanie/Projet4-OCR-Ohmyfood.git"
+    "url": "https://github.com/hNnicolas/ohmyfood"
   },
-  "author": "Melanie",
+  "author": "Nicolas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/casumelanie/Projet4-OCR-Ohmyfood/issues"
+    "url": "https://github.com/hNnicolas/ohmyfood"
   },
-  "homepage": "https://github.com/casumelanie/Projet4-OCR-Ohmyfood#readme",
+  "homepage": "https://github.com/hNnicolas/ohmyfood#readme",
   "dependencies": {
     "sass": "^1.64.2"
   }
